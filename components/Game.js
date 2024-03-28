@@ -28,6 +28,8 @@ const Game = () => {
     const [matchedCardIds, setMatchedCardIds] = useState([]);
 
    
+
+   
     useEffect(() => {
         shuffleCards();
     }, []); // Run once on component mount
