@@ -2,10 +2,11 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Button, Text } from 'react-native';
+import { View, StyleSheet, Button, Text, Vibration } from 'react-native';
 import Board from './Board';
 import gameStyles from '../Styles/GameStyle.js';
 import ImagePicker from 'react-native-image-picker';
+
 
 const Game = () => {
     const initialCards = [
@@ -58,6 +59,7 @@ const Game = () => {
                 const selectedCard = cards.find((card) => card.id === selectedCardIds[0]);
                 if (selectedCard.value === cards.find((card) => card.id === id).value) {
                     // Match found
+                    Vibration.vibrate();
                     setMatchedCardIds([...matchedCardIds, id, selectedCardIds[0]]);
                     setSelectedCardIds([]);
                 } else {
