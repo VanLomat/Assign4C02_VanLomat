@@ -51,8 +51,8 @@ const Game = () => {
 
     // Game logic for handling card clicks and matches
     const handleCardPress = (id) => {
-        
 
+        selectSound();
         if (!selectedCardIds.includes(id) && selectedCardIds.length < 2) {
             const updatedCards = cards.map((card) =>
                 card.id === id ? { ...card, isFlipped: true } : card
@@ -103,6 +103,14 @@ const Game = () => {
     const playVictorySound = async () => {
         const { sound } = await Audio.Sound.createAsync(
             require('../assets/victory.mp3')
+        );
+        setSound(sound);
+        await sound.playAsync();
+    };
+
+    const selectSound = async () => {
+        const { sound } = await Audio.Sound.createAsync(
+            require('../assets/selectcard.mp3')
         );
         setSound(sound);
         await sound.playAsync();
