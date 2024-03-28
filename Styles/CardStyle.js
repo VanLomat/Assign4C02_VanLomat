@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const cardStyles = StyleSheet.create({
+const cardStyle = StyleSheet.create({
     cardContainer: {
         width: 80,
         height: 120,
@@ -8,15 +8,16 @@ const cardStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         margin: 5,
+        backfaceVisibility: 'hidden',
     },
     flippedCard: {
         backgroundColor: 'white'
     },
     cardText: {
-        fontText: 24,
-        fontWeight: 'Bold',
+        fontSize: 24,
+        fontWeight: 'bold',
         color: 'white',
     }
 });
 
-export default cardStyles;
+export default cardStyle;

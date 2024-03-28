@@ -1,20 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 const gameStyles = StyleSheet.create({
-    gameContainer: {
-        width: 80,
-        height: 120,
-        backgroundColor: 'blue',
+    container: {
+        //width: 80,
+        //height: 120,
+        //backgroundColor: 'blue',
+        //justifyContent: 'center',
+        //alignItems: 'center',
+        //margin: 5,
+        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        margin: 5,
+        alignItems:'center',
     },
     
-    gameText: {
-        fontText: 24,
-        fontWeight: 'Bold',
-        color: 'white',
-    }
 });
 
 export default gameStyles;

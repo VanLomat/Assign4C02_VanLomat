@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import Card from './components/Card.js';
-import boardStyles from './Styles/BoardStyle.js';
+import Card from './Card.js';
+import boardStyles from '../Styles/BoardStyle.js';
 
 const Board = ({ cardData }) => {
     const [flippedCard, setFlippedCard] = useState([]);
 
-    const handleCardPress = (index) => {
-        const newFlippedCard = [...flippedCard];
-        newFlippedCard[index] = !newFlippedCard[index];
-        setFlippedCard(newFlippedCard);
+    const handleCardPress = (id) => {
+        //const newFlippedCard = [...flippedCard];
+        //newFlippedCard[id] = !newFlippedCard[id];
+        //setFlippedCard(newFlippedCard);
+        if (flippedCard.includes(id)) return;
+
+        setFlippedCard([...flippedCard, id]);
     }
 
     return (
-        <View style={boardStyles.boardContainer}>
-            {cardData.map((cardData, index) => (
+        <View style={boardStyles.board}>
+            {cardData.map((cardData) => (
                 <Card
-                    key={index}
+                    key={cardData.id}
+                    id={cardData.id}
                     value={cardData.value}
-                    isFlipped={flippedCard[index]}
-                    onCardPress={() => handleCardPress(index)}
+                    isFlipped={flippedCard.includes(cardData.id)}
+                    onCardPress={() => handleCardPress}
                 />
             ))}
         </View>
