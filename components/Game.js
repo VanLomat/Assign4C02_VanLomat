@@ -78,6 +78,7 @@ const Game = () => {
         // Reset game state for a new game
         // ...
         setCards(initialCards);
+        shuffleCards();
         setSelectedCardIds([]);
         setMatchedCardIds([]);
     };
