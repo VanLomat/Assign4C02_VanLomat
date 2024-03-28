@@ -2,10 +2,11 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Button, Text, Vibration } from 'react-native';
+import { View, Button, Text, Vibration, Alert } from 'react-native';
 import Board from './Board';
 import gameStyles from '../Styles/GameStyle.js';
 import ImagePicker from 'react-native-image-picker';
+import Victory from './victoryMessage.js';
 
 
 const Game = () => {
@@ -28,7 +29,7 @@ const Game = () => {
     const [selectedCardIds, setSelectedCardIds] = useState([]);
     const [matchedCardIds, setMatchedCardIds] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState(0);
-   
+    const [showVictory, setVictory] = useState(false);
 
    
     useEffect(() => {
@@ -63,6 +64,7 @@ const Game = () => {
                 if (selectedCard.value === cards.find((card) => card.id === id).value) {
                    Vibration.vibrate();
                     setMatchedCardIds([...matchedCardIds, id, selectedCardIds[0]]);
+                    setMatchedPairs(matchedPairs + 1);
                     setSelectedCardIds([]);
                 } else {
                     // No match, flip back after a delay
@@ -80,9 +82,20 @@ const Game = () => {
     // Vibrates when winning
     useEffect(() => {
         if (matchedPairs === cards.length / 2) {
-            Vibration.vibrate([500]);
+            //setVictory(true);
+
+            Vibration.vibrate(500);
+
+            console.log("victory?")
+
+            Alert.alert(
+                'VICTORY!',
+                'MEMORY MATCHED!',
+                [{ text: 'Restart', onPress: handleRestartGame }],
+                { cancelable: false }
+            );
         }
-    }, [matchedPairs]);
+    }, [matchedPairs, cards.length]);
 
     // Reset game 
     const handleRestartGame = () => {
@@ -91,6 +104,8 @@ const Game = () => {
         shuffleCards();
         setSelectedCardIds([]);
         setMatchedCardIds([]);
+        setMatchedPairs(0);
+        //setVictory(false);
     };
 
     return (
@@ -103,6 +118,7 @@ const Game = () => {
             <View style={gameStyles.buttonContainer}>
                 {/* Optional: Add restart game button */}
                 <Button title="Restart Game" onPress={handleRestartGame} />
+                <Victory visible={showVictory} onClose={() => setVictory(false)} />
             </View>
            
         </View>
