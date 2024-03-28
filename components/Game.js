@@ -7,6 +7,7 @@ import Board from './Board';
 import gameStyles from '../Styles/GameStyle.js';
 import ImagePicker from 'react-native-image-picker';
 import Victory from './victoryMessage.js';
+import { Audio } from 'expo-av';
 
 
 const Game = () => {
@@ -30,6 +31,7 @@ const Game = () => {
     const [matchedCardIds, setMatchedCardIds] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState(0);
     const [showVictory, setVictory] = useState(false);
+    const [sound, setSound] = useState();
 
    
     useEffect(() => {
@@ -83,11 +85,12 @@ const Game = () => {
     useEffect(() => {
         if (matchedPairs === cards.length / 2) {
             //setVictory(true);
-
+            console.log("victory?")
+            playVictorySound();
             Vibration.vibrate(500);
 
-            console.log("victory?")
-
+            
+            
             Alert.alert(
                 'VICTORY!',
                 'MEMORY MATCHED!',
@@ -96,6 +99,14 @@ const Game = () => {
             );
         }
     }, [matchedPairs, cards.length]);
+    // Sound of Victory
+    const playVictorySound = async () => {
+        const { sound } = await Audio.Sound.createAsync(
+            require('../assets/victory.mp3')
+        );
+        setSound(sound);
+        await sound.playAsync();
+    };
 
     // Reset game 
     const handleRestartGame = () => {
