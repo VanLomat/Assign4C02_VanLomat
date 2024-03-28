@@ -12,8 +12,8 @@ const Game = () => {
     const initialCards = [
         { id: 1, value: 'A', isFlipped: false },
         { id: 2, value: 'B', isFlipped: false },
-        { id: 3, value: 'C', isFlipped: false }, // Matching pair
-        { id: 4, value: 'D', isFlipped: false }, // Matching pair
+        { id: 3, value: 'C', isFlipped: false }, 
+        { id: 4, value: 'D', isFlipped: false }, 
         { id: 5, value: 'E' , isFlipped: false},
         { id: 6, value: 'F', isFlipped: false},
         { id: 7, value: 'A', isFlipped: false},
@@ -27,14 +27,16 @@ const Game = () => {
     const [cards, setCards] = useState(initialCards);
     const [selectedCardIds, setSelectedCardIds] = useState([]);
     const [matchedCardIds, setMatchedCardIds] = useState([]);
-
+    const [matchedPairs, setMatchedPairs] = useState(0);
    
 
    
     useEffect(() => {
         shuffleCards();
-    }, []); // Run once on component mount
+    }, []); 
 
+
+    // Card RNG 
     const shuffleCards = () => {
         const shuffledCards = [...initialCards];
         for (let i = shuffledCards.length - 1; i > 0; i--) {
@@ -44,9 +46,9 @@ const Game = () => {
         setCards(shuffledCards);
     };
 
+    // Game logic for handling card clicks and matches
     const handleCardPress = (id) => {
-        // Game logic for handling card clicks and matches
-        // ...
+        
 
         if (!selectedCardIds.includes(id) && selectedCardIds.length < 2) {
             const updatedCards = cards.map((card) =>
@@ -57,9 +59,9 @@ const Game = () => {
 
             if (selectedCardIds.length === 1) {
                 const selectedCard = cards.find((card) => card.id === selectedCardIds[0]);
+                // when Match found
                 if (selectedCard.value === cards.find((card) => card.id === id).value) {
-                    // Match found
-                    Vibration.vibrate();
+                   Vibration.vibrate();
                     setMatchedCardIds([...matchedCardIds, id, selectedCardIds[0]]);
                     setSelectedCardIds([]);
                 } else {
@@ -75,10 +77,16 @@ const Game = () => {
             }
         }
     };
+    // Vibrates when winning
+    useEffect(() => {
+        if (matchedPairs === cards.length / 2) {
+            Vibration.vibrate([500]);
+        }
+    }, [matchedPairs]);
 
+    // Reset game 
     const handleRestartGame = () => {
-        // Reset game state for a new game
-        // ...
+        
         setCards(initialCards);
         shuffleCards();
         setSelectedCardIds([]);
@@ -101,13 +109,6 @@ const Game = () => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-    },
-});
+
 
 export default Game;

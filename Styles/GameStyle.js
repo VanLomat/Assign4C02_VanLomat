@@ -8,10 +8,10 @@ const gameStyles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     boardContainer: {
-        marginBottom: 400, // Add margin bottom to create space between board and button
+        marginBottom: 400,
     },
     buttonContainer: {
-        marginBottom: 20, // Add margin bottom to create space between board and button
+        marginBottom: 20,
     },
 });
 

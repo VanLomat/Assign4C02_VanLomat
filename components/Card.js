@@ -1,26 +1,6 @@
 
-
-//import React from 'react';
-//import { Text, TouchableOpacity, View } from 'react-native';
-//import cardStyle from '../Styles/CardStyle.js';
-//import FlipCard from 'react-native-flip-card';
-
-//const Card = ({ id, value, isFlipped, onCardPress }) => {
-//    return (
-//        <TouchableOpacity
-//            style={[cardStyle.container, { backgroundColor: isFlipped ? '#ccc' : '#fff' }]}
-//            onPress={() => onCardPress(id)}
-//            activeOpacity={0.8}
-//        >
-//            <Text style={cardStyle.cardText}>{isFlipped ? value : '?'}</Text>
-//        </TouchableOpacity>
-//    );
-//};
-
-//export default Card;
-
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, Image } from 'react-native';
 import FlipCard from 'react-native-flip-card';
 import cardStyle from '../Styles/CardStyle';
 
@@ -38,7 +18,7 @@ const Card = ({ id, value, isFlipped, onCardPress }) => {
             >
                 {/* Front Side */}
                 <View style={[cardStyle.cardFace, cardStyle.cardFaceFront]}>
-                    <Text style={cardStyle.cardText}>?</Text>
+                    <Image source={require('../assets/vancard.png')} style={{ width: 100, height: 120 }} />
                 </View>
                 {/* Back Side */}
                 <View style={[cardStyle.cardFace, cardStyle.cardFaceBack]}>
