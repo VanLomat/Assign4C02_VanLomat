@@ -8,10 +8,11 @@ const boardStyles = StyleSheet.create({
         //justifyContent: 'center',
         //alignItems: 'center',
         //margin: 5,
+
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        alignItems:'center',
+        alignItems: 'center',
     },
 
     

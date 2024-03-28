@@ -4,8 +4,13 @@ import Game from './components/Game.js';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Game/>
+      <View style={styles.container}>
+         
+              
+          
+          
+              <Game />
+          
       <StatusBar style="auto" />
     </View>
   );
@@ -17,5 +22,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+    },
+  
 });
