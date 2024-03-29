@@ -25,13 +25,19 @@ GameStyle.js
 [Assets]
 
 (Pictures) 
+
 vancard.png (Card Front Face)
+
 Logo.png (splash screen)
 
 (Sounds (.mp3))
+
 match
+
 notmatch
+
 selectcard
+
 victory
 
 [Overall] 
