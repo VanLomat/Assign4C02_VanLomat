@@ -5,21 +5,29 @@ Thank you for actually reading this!
 [Dependencies] 
 
 react
+
 react-native
+
 expo-av
+
 expo-status-bar
+
 react-native-flip-card
 
 [Components]
 
 Game.js
+
 Card.js
+
 Board.js
 
 [Stylesheets (found in Styles folder)]
 
 BoardStyle.js
+
 CardStyle.js
+
 GameStyle.js
 
 [Assets]
