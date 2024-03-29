@@ -73,12 +73,14 @@ const Game = () => {
                    
                 } else {
                     // No match, flip back after a delay
+                    notMatchSound();
                     setTimeout(() => {
                         const flippedBackCards = cards.map((card) =>
                             selectedCardIds.includes(card.id) ? { ...card, isFlipped: false } : card
                         );
                         setCards(flippedBackCards);
                         setSelectedCardIds([]);
+                       
                     }, 1000);
                 }
             }
@@ -122,6 +124,15 @@ const Game = () => {
     const matchSound = async () => {
         const { sound } = await Audio.Sound.createAsync(
             require('../assets/match.mp3')
+        );
+        setSound(sound);
+        await sound.playAsync();
+    };
+
+    //Sound of No Match
+    const notMatchSound = async () => {
+        const { sound } = await Audio.Sound.createAsync(
+            require('../assets/notmatch.mp3')
         );
         setSound(sound);
         await sound.playAsync();
