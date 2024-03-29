@@ -65,9 +65,13 @@ https://medium.com/@yildizfatma/lets-make-a-memory-app-99506dfac7f6
 [Links] 
 
 https://www.npmjs.com/package/react-native-flip-card
+
 https://reactnative.dev/docs/vibration
+
 https://docs.expo.dev/versions/latest/sdk/audio/
+
 https://www.myinstants.com/ (for sound assets)
+
 https://www.audacityteam.org/ (for editing sound asset) 
 
 [Developer]
@@ -76,12 +80,12 @@ Van Leuen T. Lomat
 
 [Special Thanks] 
 
-Stephen Graham 
-Claire Fleckney
-Brigham Baker
-Chester Constantino
-Kobe Smallman
-Razel Ventura
+Stephen Graham, 
+Claire Fleckney,
+Brigham Baker,
+Chester Constantino,
+Kobe Smallman,
+Razel Ventura,
 and the Whole C02 Mobile Development Class 
 
 
