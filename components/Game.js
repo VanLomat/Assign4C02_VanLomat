@@ -64,10 +64,13 @@ const Game = () => {
                 const selectedCard = cards.find((card) => card.id === selectedCardIds[0]);
                 // when Match found
                 if (selectedCard.value === cards.find((card) => card.id === id).value) {
-                   Vibration.vibrate();
+                    
+                    Vibration.vibrate();
                     setMatchedCardIds([...matchedCardIds, id, selectedCardIds[0]]);
                     setMatchedPairs(matchedPairs + 1);
                     setSelectedCardIds([]);
+                    matchSound();
+                   
                 } else {
                     // No match, flip back after a delay
                     setTimeout(() => {
@@ -107,10 +110,18 @@ const Game = () => {
         setSound(sound);
         await sound.playAsync();
     };
-
+    // Sound of Selection
     const selectSound = async () => {
         const { sound } = await Audio.Sound.createAsync(
             require('../assets/selectcard.mp3')
+        );
+        setSound(sound);
+        await sound.playAsync();
+    };
+    //Sound of Match
+    const matchSound = async () => {
+        const { sound } = await Audio.Sound.createAsync(
+            require('../assets/match.mp3')
         );
         setSound(sound);
         await sound.playAsync();
